@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>To do list</title>
+    <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <div class="box">
@@ -9,6 +10,7 @@
     </div>
     <div class="box">
       <% for(var i= 0 ;i<elem.length ; i++) {%>
+        <input type="checkbox">
         <p><%= elem[i] %></p>
       <%}%>
       <form action="/" method="post">

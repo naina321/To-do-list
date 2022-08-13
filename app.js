@@ -3,10 +3,9 @@ const bodyParser = require("body-parser");
 
 const app = express();
 app.set("view engine", "ejs");
-app.use(express.static("css"));
+app.use(express.static("public"));
 app.use(express.urlencoded({ extend: true }));
 
-const ex = "working";
 const items = [];
 app.get("/", (req, res) => {
   res.render("list", { elem: items });
