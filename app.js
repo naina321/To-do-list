@@ -12,15 +12,17 @@ const trySchema = mongoose.Schema({
   name: String,
 });
 const item = mongoose.model("task", trySchema);
-const todo = new item({
-  name: "dancingggg",
-});
-const todo1 = new item({
-  name: "dancingggg",
-});
-// todo.save();
-// todo1.save();
+
 console.log("in the mogodb port");
+
+app.post("/", (req, res) => {
+  const taskName = req.body.ele1;
+  const itemchild = new item({
+    name: taskName,
+  });
+  itemchild.save();
+  res.redirect("/");
+});
 
 app.get("/", (req, res) => {
   item.find({}, (err, itemsfounded) => {
