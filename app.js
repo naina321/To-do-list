@@ -24,12 +24,23 @@ app.post("/", (req, res) => {
   res.redirect("/");
 });
 
+app.post("/delete", (req, res) => {
+  const checked = req.body.check;
+  console.log(checked);
+  item.findByIdAndRemove(checked, (err, result) => {
+    if (!err) {
+      console.log("deleted");
+    }
+  });
+  res.redirect("/");
+});
 app.get("/", (req, res) => {
   item.find({}, (err, itemsfounded) => {
     if (err) console.log(err);
     else res.render("list", { elem: itemsfounded });
   });
 });
-app.listen(3000, () => {
+
+app.listen(5000, () => {
   console.log("server is working");
 });

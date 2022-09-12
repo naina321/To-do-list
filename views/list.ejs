@@ -2,19 +2,32 @@
 <html>
   <head>
     <title>To do list</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div class="box" id="heading">
       <h1>ITEMS</h1>
     </div>
     <div class="box">
-      <% for(var i= 0 ;i<elem.length ; i++) {%>
+      <!-- <% for(var i= 0 ;i<elem.length ; i++) {%>
         <div class="item">
           <input type="checkbox">
           <p><%= elem[i].name %></p>
         </div>
-      <%}%>
+      <%}%> -->
+      <% elem.forEach((item)=>{%>
+      <div class="item">
+        <form action="/delete" method="post" class="item">
+          <input
+            type="checkbox"
+            value="<%= item._id %>"
+            name="check"
+            onchange="this.form.submit()"
+          />
+          <p><%= item.name %></p>
+        </form>
+      </div>
+      <%})%>
       <form action="/" method="post">
         <input type="text" name="ele1" placeholder="ENTER THE TASK" />
         <button type="submit">+</button>
